@@ -36,15 +36,6 @@ const inputStyles = {
 };
 
 
-
-
-
-
-
-
-
-
-
 const AddRecipe = () => {
   const dispatch = useDispatch();
   const recipes = useSelector((state) => state.recipeSlice.Recipes);
@@ -190,17 +181,6 @@ const AddRecipe = () => {
                   }
                   fullWidth
                 />
-
-
-
-
-
-
-
-
-
-
-
                 {errors.description && <Typography sx={{ color: "#CF885B" }}>שדה זה חובה</Typography>}
               </Grid>
 
