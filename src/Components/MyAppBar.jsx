@@ -9,19 +9,20 @@ import Popover from '@mui/material/Popover' // Import Popover
 import { useSelector, useDispatch } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { logoutUser } from '../Store/UserSlice' // אם יש לך פעולה ליציאה
-import {useState} from 'react'
+import { useState } from 'react'
 
 const pages = [
   { name: 'דף הבית', link: '/' },
-  { name: 'מתכונים', link: '/RecipeList'
-   },
+  {
+    name: 'מתכונים', link: '/RecipeList'
+  },
 ]
 
 const MyAppBar = () => {
   const userObj = useSelector((state) => state.userSlice)
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  
+
   const [anchorEl, setAnchorEl] = useState(null) // Set the anchorEl to manage Popover
 
   const handleSignIn = () => {
@@ -40,8 +41,8 @@ const MyAppBar = () => {
     dispatch(logoutUser()) // שלח פעולה ל-Redux כדי להתנתק
     setAnchorEl(null) // סגור את ה-Popover
   }
-  const handleFavorite=()=>{
-    setAnchorEl(null) 
+  const handleFavorite = () => {
+    setAnchorEl(null)
     navigate('/Favorite')
   }
 
@@ -49,7 +50,7 @@ const MyAppBar = () => {
   const id = open ? 'simple-popover' : undefined
 
   return (
-    <AppBar position="static" sx={{height:'15vh',justifyContent:'center',backgroundColor:'black',color: '#CF885B',}}>
+    <AppBar position="static" sx={{ height: '15vh', justifyContent: 'center', backgroundColor: 'black', color: '#CF885B', }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           {/* <Typography
@@ -74,35 +75,37 @@ const MyAppBar = () => {
             {pages.map((page) => (
               <Button
                 key={page.name}
-                sx={{ my: 2,  display: 'block',fontSize:'20px' }}
+                sx={{ my: 2, display: 'block', fontSize: '20px' }}
               >
-                <Link to={page.link} style={{ textDecoration: 'none',color: '#CF885B'}}>
+                <Link to={page.link} style={{ textDecoration: 'none', color: '#CF885B' }}>
                   {page.name}
                 </Link>
               </Button>
             ))}
-              {userObj?.name&&<Button sx={{ my: 2, color: '#CF885B', display: 'block' ,fontSize:'20px'}}>
-                <Link to="/AddRecipe" style={{ textDecoration: 'none', color: 'inherit' }}>
-                  הוספת מתכון
-                </Link>
-              </Button>}
+            {userObj?.name && <Button sx={{ my: 2, color: '#CF885B', display: 'block', fontSize: '20px' }}>
+              <Link to="/AddRecipe" style={{ textDecoration: 'none', color: 'inherit' }}>
+                הוספת מתכון
+              </Link>
+            </Button>}
 
           </Box>
 
-          <Box sx={{ 
-  position: 'absolute', 
-  left: '50%', 
-  transform: 'translateX(-50%)', 
-  width: '7%', 
-  height: 'auto' 
-}}>
-  <img src="/Images/logo.jpg" style={{ width: '100%', height: 'auto' }} />
-</Box>
+          <Box sx={{
+            position: 'absolute',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: '17%',
+            height: 'auto'
+          }}><Typography sx={{ color: '#CF885B', fontFamily: 'Smooch Sans', fontSize: '50px' }}>
+              Sweet Heart
+            </Typography>
+
+          </Box>
 
 
           {/* אם המשתמש מחובר, תראה את ה-Avatar עם Popover */}
           {userObj?.name ? (
-            <Box sx={{ display: 'flex', alignItems: 'center'}}>
+            <Box sx={{ display: 'flex', alignItems: 'center' }}>
               <Avatar
                 sx={{
                   bgcolor: '#CF885B',
@@ -128,7 +131,7 @@ const MyAppBar = () => {
                   horizontal: 'center',
                 }}
               >
-                <Box sx={{ p: 2}}>
+                <Box sx={{ p: 2 }}>
                   <Typography variant="body2">שם {userObj.name}</Typography>
                   <Typography variant="body2">מייל: {userObj.email}</Typography>
                   <Button onClick={handleFavorite}>המועדפים שלי ❤️ </Button>
@@ -138,7 +141,7 @@ const MyAppBar = () => {
             </Box>
           ) : (
             <Button color="inherit" onClick={handleSignIn}>
-              התחבר
+              <Typography sx={{ fontSize: '20px' }}>התחבר</Typography>
             </Button>
           )}
         </Toolbar>
