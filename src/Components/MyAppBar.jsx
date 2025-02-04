@@ -40,6 +40,8 @@ const MyAppBar = () => {
   const handleSignOut = () => {
     dispatch(logoutUser()) // שלח פעולה ל-Redux כדי להתנתק
     setAnchorEl(null) // סגור את ה-Popover
+    navigate('/')
+
   }
   const handleFavorite = () => {
     setAnchorEl(null)
