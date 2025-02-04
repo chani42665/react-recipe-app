@@ -21,12 +21,12 @@ import { useForm } from "react-hook-form";
 const inputStyles = {
   border: "1px solid #CF885B",
   backgroundColor: "black",
-  color: "#b47904",
+  color: "#CF885B",
   "& .MuiInputBase-input": {
-    color: "#A9A9A9",
+    color: "#CF885B",
   },
   "&::placeholder": {
-    color: "#A9A9A9",
+    color: "#CF885B",
   },
   "&:focus": {
     outline: "none", // ביטול קו הפוקוס
@@ -42,15 +42,6 @@ const inputStyles = {
   },
   "--joy-palette-focusVisible": "#CF885B", // שינוי הצבע של הפוקוס
 };
-
-
-
-
-
-
-
-
-
 
 
 const AddRecipe = () => {
@@ -166,17 +157,17 @@ const AddRecipe = () => {
                 } fullWidth />
               </Grid>
               <Grid item xs={12}>
-                <Button variant="contained" sx={{ backgroundColor: '#b47904', color: 'black' }} onClick={handleAddIngredientGroup}>
+                <Button variant="contained" sx={{ backgroundColor: '#CF885B', color: 'black' }} onClick={handleAddIngredientGroup}>
                   הוסף קבוצה של רכיבים
                 </Button>
               </Grid>
 
               {ingredientGroups.length > 0 && (
                 <Grid item xs={12}>
-                  <Typography color="#b47904">קבוצות רכיבים שנוספו:</Typography>
+                  <Typography color="#CF885B">קבוצות רכיבים שנוספו:</Typography>
                   {ingredientGroups.map((group, index) => (
-                    <Box key={index} sx={{ mt: 1, p: 1, border: "1px solid #b47904", borderRadius: "5px" }}>
-                      <Typography color="#b47904">{group.title}</Typography>
+                    <Box key={index} sx={{ mt: 1, p: 1, border: "1px solid #CF885B", borderRadius: "5px" }}>
+                      <Typography color="#CF885B">{group.title}</Typography>
                       <ul>
                         {group.ingredientsList.map((item, i) => (
                           <li key={i} style={{ color: "#A9A9A9" }}>{item}</li>
@@ -198,28 +189,20 @@ const AddRecipe = () => {
                   }
                   fullWidth
                 />
-
-
-
-
-
-
-
-
-
-
-
                 {errors.description && <Typography sx={{ color: "#CF885B" }}>שדה זה חובה</Typography>}
               </Grid>
 
               {/* העלאת תמונה */}
               <Grid item xs={12}>
                 <Input type="file" accept="image/*" onChange={handleImageUpload} sx={inputStyles} fullWidth />
-                {img && <Box sx={{ mt: 2 }}><img src={img} alt="Uploaded Preview" style={{ maxWidth: "200px" }} /></Box>}
+                {img && <Box sx={{ mt: 2 }}><img src={img} alt="Uploaded Preview" style={{backgroundColor:"#CF885B" , maxWidth: "200px" }} /></Box>}
               </Grid>
+              
+
+
 
               <Grid item xs={12}>
-                <Button variant="contained" type="submit" sx={{ backgroundColor: '#b47904', color: 'black' }}>
+                <Button variant="contained" type="submit" sx={{ backgroundColor: '#CF885B', color: 'black' }}>
                   הוסף מתכון
                 </Button>
               </Grid>

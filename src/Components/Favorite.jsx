@@ -16,9 +16,27 @@ const Favorite = () => {
       }, [recipes]);
 
     return (<>
-        <img src="/Images/macaron.jpg"
-        style={{ width: '74.2vw', objectFit: 'cover', height:'55vh',marginRight:'12.5%',marginTop:'2vh'}}>
-        </img>
+    <Box sx={{ position: 'relative', width: '74.2vw', height: '55vh', marginRight: '12.5%', marginTop: '2vh', textAlign: 'center' }}>
+    <img 
+        src="/Images/macaron.jpg" 
+        style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+    />
+    <Typography 
+        sx={{ 
+            position: 'absolute', 
+            top: '50%', 
+            left: '50%', 
+            color: 'white', 
+            fontSize: '100px',
+            transform: 'translate(-50%, -50%)' 
+        }}
+    >
+        מתכונים
+    </Typography>
+</Box>
+
+
+        
 
         <Box sx={{display:'flex',justifyContent:'center'}}>
            

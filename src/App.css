@@ -3,6 +3,10 @@
 }
 body{
   background-color: black !important;
+  font-family: "Assistant", serif;
+  font-optical-sizing: auto;
+  font-weight: 150;
+  font-style: normal
 }
 .App-logo {
   height: 40vmin;

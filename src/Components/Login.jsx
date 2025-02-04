@@ -152,9 +152,12 @@ import { useForm, Controller } from "react-hook-form"
 import { useDispatch } from "react-redux"
 import { createUser } from '../Store/UserSlice'
 import { TextField, Typography, Grid, Button, Container } from "@mui/material"
+import { Navigate, useNavigate } from "react-router-dom"
 
 const Login = () => {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
+
   const {register,    formState: { errors },  control, handleSubmit } = useForm({
     defaultValues: { name: "", email: "" },
   })
@@ -162,6 +165,7 @@ const Login = () => {
   const onSubmit = (data) => {
     console.log(data)
     dispatch(createUser(data))
+    navigate("/")
   }
 
   return (
