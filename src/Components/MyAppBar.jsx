@@ -77,14 +77,14 @@ const MyAppBar = () => {
             {pages.map((page) => (
               <Button
                 key={page.name}
-                sx={{ my: 2, display: 'block', fontSize: '20px' }}
+                sx={{ my: 2, display: 'block', fontSize: '20px',color:'transparent' }}
               >
                 <Link to={page.link} style={{ textDecoration: 'none', color: '#CF885B' }}>
                   {page.name}
                 </Link>
               </Button>
             ))}
-            {userObj?.name && <Button sx={{ my: 2, color: '#CF885B', display: 'block', fontSize: '20px' }}>
+            {userObj?.name && <Button sx={{ my: 2, color: '#CF885B', display: 'block', fontSize: '20px',color:'transparent' }}>
               <Link to="/AddRecipe" style={{ textDecoration: 'none', color: 'inherit' }}>
                 הוספת מתכון
               </Link>
@@ -142,7 +142,7 @@ const MyAppBar = () => {
               </Popover>
             </Box>
           ) : (
-            <Button color="inherit" onClick={handleSignIn}>
+            <Button color="transparent" onClick={handleSignIn}>
               <Typography sx={{ fontSize: '20px' }}>התחבר</Typography>
             </Button>
           )}
