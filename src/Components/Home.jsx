@@ -51,17 +51,17 @@ const Home = () => {
 
       <Typography sx={{ marginTop: '20vh', fontSize: '50px', color: '#CF885B' }}>חדש באתר❤️</Typography>
 
-      <Box sx={{ marginTop: '20px', padding: '20px', width: '80%' }}>
+      <Box sx={{ marginTop: '20px', padding: '20px', width: '80%',alignItems:'center',justifyContent:'center' ,display: 'flex'}}>
         <Grid container spacing={1}>
           {lastThreeRecipes.map((item) => (
             <Grid item xs={12} sm={5} md={4} key={item.id}>
-              <Box sx={{ position: 'relative' }}>
+              <Box sx={{ position: 'relative',alignItems:'center',justifyContent:'center' }}>
                 <Link
                   to={`/RecipeList/${item.id}`}
                   style={{
                     display: 'block',
-                    width: '100%',
-                    height: '100%',
+                    width: '90%',
+                    height: '80%',
                     textDecoration: 'none',
                   }}
                 >

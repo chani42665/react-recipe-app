@@ -28,9 +28,11 @@ const RecipeList = () => {
                         position: 'absolute', 
                         top: '50%', 
                         left: '50%', 
-                        color: 'white', 
+                        color: 'black', 
                         fontSize: '100px',
-                        transform: 'translate(-50%, -50%)' 
+                        transform: 'translate(-50%, -50%)'
+                ,     textShadow: '3px 3px 3px rgba(255, 255, 255, 0.7)'
+ 
                     }}
                 >
                     מתכונים

@@ -97,7 +97,7 @@ const MyAppBar = () => {
             left: '50%',
             transform: 'translateX(-50%)',
             width: '17%',
-            height: 'auto'
+            height: 'auto',textAlign:'center'
           }}><Typography sx={{ color: '#CF885B', fontFamily: 'Smooch Sans', fontSize: '50px' }}>
               Sweet Heart
             </Typography>
