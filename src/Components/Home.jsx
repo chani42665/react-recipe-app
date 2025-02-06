@@ -4,8 +4,11 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import RestaurantIcon from '@mui/icons-material/Restaurant';
+import usePageTitle from '../Hooks/usePageTitle';
 
 const Home = () => {
+  usePageTitle("דף הבית")
+
   const [currentImage, setCurrentImage] = useState(0);
   const images = ['Images/i1.jpg', 'Images/i2.jpg', 'Images/i3.jpg'];
   const recipes = useSelector((state) => state.recipeSlice.Recipes);

@@ -9,6 +9,7 @@ import { addRecipe } from "../Store/RecipeSlice";
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import { useForm } from "react-hook-form";
+import usePageTitle from '../Hooks/usePageTitle';
 
 
 
@@ -45,6 +46,8 @@ const inputStyles = {
 
 
 const AddRecipe = () => {
+
+  usePageTitle("הוספת מתכון")
   const dispatch = useDispatch();
   const recipes = useSelector((state) => state.recipeSlice.Recipes);
   const nextId = recipes.length + 1;

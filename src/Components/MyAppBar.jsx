@@ -50,81 +50,131 @@ const MyAppBar = () => {
   const id = open ? 'simple-popover' : undefined
 
   return (
-    <AppBar position="static" sx={{ height: '15vh', justifyContent: 'center', backgroundColor: 'black', color: '#CF885B' }}>
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page.name}
-                sx={{ my: 2, display: 'block', fontSize: '20px', color: 'transparent', position: 'relative' }}
-              >
-                <Link 
-                  to={page.link} 
-                  style={{ textDecoration: 'none', color: '#CF885B', paddingBottom: '5px', borderBottom: location.pathname === page.link ? '2px solid #CF885B' : 'none' }}
-                >
-                  {page.name}
-                </Link>
-              </Button>
-            ))}
-            {userObj?.name && (
-              <Button sx={{ my: 2, color: '#CF885B', display: 'block', fontSize: '20px', color: 'transparent', position: 'relative' }}>
-                <Link to="/AddRecipe" style={{ textDecoration: 'none', color: '#CF885B', paddingBottom: '5px', borderBottom: location.pathname === '/AddRecipe' ? '2px solid #CF885B' : 'none' }}>
-                  הוספת מתכון
-                </Link>
-              </Button>
-            )}
-          </Box>
+    <AppBar position="static" sx={{  minHeight: '15h',backgroundColor: 'black', color: '#CF885B' }}>
+      {/* ביטול רווחים ב-AppBar */}
+      <Toolbar sx={{ padding: 0, margin: 0, alignItems: 'center' }}>
+        {/* תפריט ניווט */}
+        <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', paddingLeft: 0 }}>
+          {pages.map((page) => (
+            <Button
+              key={page.name}
+              sx={{
+                my: 2,
+                display: 'block',
+                fontSize: '20px',
+                color: 'transparent',
+                position: 'relative',
+                padding: 0,
+                margin: 0,
+                marginRight: '15px',
+                paddingTop: '5px', 
 
-          <Box sx={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', width: '17%', height: 'auto', textAlign: 'center' }}>
-            <Typography sx={{ color: '#CF885B', fontFamily: 'Smooch Sans', fontSize: '50px' }}>
-              Sweet Heart
-            </Typography>
-          </Box>
-
-          {userObj?.name ? (
-            <Box sx={{ display: 'flex', alignItems: 'center' }}>
-              <Avatar
-                sx={{
-                  bgcolor: '#CF885B',
-                  width: 40,
-                  height: 40,
-                  cursor: 'pointer',
-                }}
-                onClick={handlePopoverOpen}
-              >
-                {userObj.name[0]}
-              </Avatar>
-              <Popover
-                id={id}
-                open={open}
-                anchorEl={anchorEl}
-                onClose={handlePopoverClose}
-                anchorOrigin={{
-                  vertical: 'bottom',
-                  horizontal: 'center',
-                }}
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'center',
+              }}
+            >
+              <Link 
+                to={page.link} 
+                style={{ 
+                  textDecoration: 'none', 
+                  color: '#CF885B', 
+                  paddingBottom: '5px', 
+                  borderBottom: location.pathname === page.link ? '2px solid #CF885B' : 'none' 
                 }}
               >
-                <Box sx={{ p: 2 }}>
-                  <Typography variant="body2">שם {userObj.name}</Typography>
-                  <Typography variant="body2">מייל: {userObj.email}</Typography>
-                  <Button onClick={handleFavorite}>המועדפים שלי ❤️ </Button>
-                  <Button onClick={handleSignOut}>התנתק</Button>
-                </Box>
-              </Popover>
-            </Box>
-          ) : (
-            <Button color="transparent" onClick={handleSignIn}>
-              <Typography sx={{ fontSize: '20px' }}>התחבר</Typography>
+                {page.name}
+              </Link>
+            </Button>
+          ))}
+          {userObj?.name && (
+            <Button sx={{ my: 2, display: 'block', fontSize: '20px', color: 'transparent', position: 'relative', padding: 0, marginRight: '15px', paddingTop: '5px'}}>
+              <Link 
+                to="/AddRecipe" 
+                style={{ 
+                  textDecoration: 'none', 
+                  color: '#CF885B', 
+                  paddingBottom: '5px', 
+                  borderBottom: location.pathname === '/AddRecipe' ? '2px solid #CF885B' : 'none' 
+                }}
+              >
+                הוספת מתכון
+              </Link>
             </Button>
           )}
-        </Toolbar>
-      </Container>
+        </Box>
+
+        {/* לוגו במרכז */}
+        <Box sx={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', textAlign: 'center', }}>
+          <Typography sx={{ color: '#CF885B', fontFamily: 'Smooch Sans', fontSize: '50px' , paddingTop: '5px',}}>
+            Sweet Heart
+          </Typography>
+        </Box>
+
+        {/* כפתור התחברות או אוואטאר */}
+        {userObj?.name ? (
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <Avatar
+              sx={{
+                bgcolor: '#CF885B',
+                width: 40,
+                height: 40,
+                cursor: 'pointer',
+              }}
+              onClick={handlePopoverOpen}
+            >
+              {userObj.name[0]}
+            </Avatar>
+            <Popover
+              id={id}
+              open={open}
+              anchorEl={anchorEl}
+              onClose={handlePopoverClose}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'center',
+              }}
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'center',
+              }}
+            >
+              <Box sx={{ p: 2 }}>
+                <Typography variant="body2">שם: {userObj.name}</Typography>
+                <Typography variant="body2">מייל: {userObj.email}</Typography>
+                <Button onClick={handleFavorite}>המועדפים שלי ❤️</Button>
+                <Button onClick={handleSignOut}>התנתק</Button>
+              </Box>
+            </Popover>
+          </Box>
+        ) : (
+          <Button 
+            sx={{ 
+              my: 2, 
+              display: 'block', 
+              fontSize: '20px', 
+              color: 'transparent', 
+              position: 'relative', 
+              '&:hover': { backgroundColor: 'transparent' }, 
+              '&:focus': { backgroundColor: 'transparent' },
+              padding: 0,
+            }} 
+            onClick={handleSignIn}
+          >
+            <Typography 
+              sx={{ 
+                color: '#CF885B', 
+                fontSize: '20px', 
+                textDecoration: 'none', 
+                paddingBottom: '5px', 
+                paddingTop: '5px',
+                borderBottom: location.pathname === '/Login' ? '2px solid #CF885B' : 'none' 
+              }}
+            >
+              התחבר
+            </Typography>
+          </Button>
+        )}
+      </Toolbar>
     </AppBar>
+
   )
 }
 

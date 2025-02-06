@@ -9,8 +9,11 @@ import Box from '@mui/material/Box';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import Grid from '@mui/material/Grid';
+import usePageTitle from '../Hooks/usePageTitle';
+
 
 const RecipeList = () => {
+    usePageTitle("מתכונים")
     const recipes = useSelector((state) => state.recipeSlice.Recipes);
     useEffect(() => {
         console.log(recipes);

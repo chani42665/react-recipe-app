@@ -8,8 +8,12 @@ import RestaurantIcon from '@mui/icons-material/Restaurant';
 import styled from 'styled-components';
 import { updateFavorite } from '../Store/RecipeSlice';
 import { useEffect } from 'react';
+import usePageTitle from '../Hooks/usePageTitle';
+
 
 const RecipeDetails = () => {
+
+  
   const { id } = useParams();
   const recipes = useSelector((state) => state.recipeSlice.Recipes);
   const currentRecipe = recipes.find((item) => item.id === parseInt(id));
@@ -17,12 +21,13 @@ const RecipeDetails = () => {
   
    useEffect(() => {
       console.log(recipes);
-    }, [recipes]);
+    }, [recipes])
+    usePageTitle(currentRecipe.name)
 
   if (!currentRecipe) {
     return <Typography variant="h6">Recipe not found</Typography>;
   }
-
+  
   return (
     <Box sx={{ width: '100%', overflow: 'hidden' }}>
       <Grid container sx={{ width: '100%' }}>

@@ -8,8 +8,12 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
+import usePageTitle from '../Hooks/usePageTitle';
 
 const Favorite = () => {
+
+    usePageTitle("מועדפים")
+
     const recipes = useSelector((state) => state.recipeSlice.Recipes);
      useEffect(() => {
         console.log(recipes);
