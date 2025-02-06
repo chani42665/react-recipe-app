@@ -21,19 +21,15 @@ const Home = () => {
   const lastThreeRecipes = recipes.slice(-3);
 
   return (
-    <Box sx={{ width: '100%', overflow: 'hidden' ,justifyContent: "center",display:'flex' , flexWrap:'wrap' }}>
+    <Box sx={{ width: '100%', overflow: 'hidden', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <Box
         sx={{
           width: '100%',
           height: '100vh', 
           overflow: 'hidden',
-          position: 'absolute',
-          top: '15vh',
-          left: 0,
-          zIndex: 1,
+          position: 'relative',
         }}
       >
-
         {images.map((src, index) => (
           <Box
             key={index}
@@ -53,11 +49,10 @@ const Home = () => {
         ))}
       </Box>
 
-      <Typography sx={{ marginTop: '130vh',fontSize:'50px',color:'#CF885B'}}>חדש באתר ❤️ </Typography>
+      <Typography sx={{ marginTop: '20vh', fontSize: '50px', color: '#CF885B' }}>חדש באתר❤️</Typography>
 
-
-      <Box sx={{ marginTop: '15vh',marginBottom:'20vh', padding: '20px',width:'80%' }}> 
-        <Grid container spacing={1} sx={{ position: 'relative' }}>
+      <Box sx={{ marginTop: '20px', padding: '20px', width: '80%' }}>
+        <Grid container spacing={1}>
           {lastThreeRecipes.map((item) => (
             <Grid item xs={12} sm={5} md={4} key={item.id}>
               <Box sx={{ position: 'relative' }}>
@@ -118,17 +113,15 @@ const Home = () => {
           ))}
         </Grid>
       </Box>
-      {/* <Typography sx={{color:'#CF885B' ,fontSize:'20px'}}>כל הזכויות שמורות לעולם הבא והקרן קיימת לעולם הזה</Typography>
-      <Typography sx={{color:'#CF885B',fontSize:'18px'}}>המתכונים באדיבות אופה לשבת</Typography> */}
-      <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px',justifyContent:'center' , alignItems: 'center',marginBottom:'3vh'}}>
-  <Typography sx={{color:'#CF885B', fontSize:'20px'}}>
-    כל הזכויות שמורות לעולם הבא והקרן קיימת לעולם הזה
-  </Typography>
-  <Typography sx={{color:'#CF885B', fontSize:'18px'}}>
-    המתכונים באדיבות אופה לשבת
-  </Typography>
-</Box>
 
+      <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px', justifyContent: 'center', alignItems: 'center', marginBottom: '3vh' }}>
+        <Typography sx={{ color: '#CF885B', fontSize: '20px' }}>
+          כל הזכויות שמורות לעולם הבא והקרן קיימת לעולם הזה
+        </Typography>
+        <Typography sx={{ color: '#CF885B', fontSize: '18px' }}>
+          המתכונים באדיבות אופה לשבת
+        </Typography>
+      </Box>
     </Box>
   );
 };
