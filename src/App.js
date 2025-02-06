@@ -1,9 +1,8 @@
-import { Route, Routes } from 'react-router-dom';
-import './App.css';
-import MyAppBar from './Components/MyAppBar';
-import React, { Suspense } from 'react';
-import CircularProgress from '@mui/material/CircularProgress';
-
+import { Route, Routes } from 'react-router-dom'
+import './App.css'
+import MyAppBar from './Components/MyAppBar'
+import React, { Suspense } from 'react'
+import CircularProgress from '@mui/material/CircularProgress'
 
 const LazyHome=React.lazy(()=>import('./Components/Home'))
 const LazyRecipeList=React.lazy(()=>import('./Components/RecipeList'))
@@ -12,12 +11,9 @@ const LazyLogin=React.lazy(()=>import('./Components/Login'))
 const LazyAddRecipe=React.lazy(()=>import('./Components/AddRecipe'))
 const LazyFavorite=React.lazy(()=>import('./Components/Favorite'))
 
-
-
 function App() {
 
   return (
-
     <>
     <MyAppBar/>
     <Routes>
@@ -27,10 +23,9 @@ function App() {
       <Route path='/Login' element={<Suspense fallback={<CircularProgress color="secondary" />}><LazyLogin /></Suspense>} />
       <Route path='/AddRecipe' element={<Suspense fallback={<CircularProgress color="secondary" />}><LazyAddRecipe /></Suspense>} />
       <Route path='/Favorite' element={<Suspense fallback={<CircularProgress color="secondary" />}><LazyFavorite /></Suspense>} />
-
     </Routes>
     </>
-  );
+  )
 }
 
-export default App;
+export default App

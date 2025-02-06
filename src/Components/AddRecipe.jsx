@@ -1,23 +1,15 @@
-import { Box, Button, Container, CssBaseline, Input, Typography, Grid } from "@mui/material";
-import Textarea from '@mui/joy/Textarea';
-import Select from '@mui/joy/Select';
-import Option from '@mui/joy/Option';
-import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown';
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { addRecipe } from "../Store/RecipeSlice";
-import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content';
-import { useForm } from "react-hook-form";
-import usePageTitle from '../Hooks/usePageTitle';
-
-
-
-
-
-
-
-
+import { Box, Button, Container, CssBaseline, Input, Typography,Grid } from "@mui/material"
+import Textarea from '@mui/joy/Textarea'
+import Select from '@mui/joy/Select'
+import Option from '@mui/joy/Option'
+import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown'
+import { useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { addRecipe } from "../Store/RecipeSlice"
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+import { useForm } from "react-hook-form"
+import usePageTitle from '../Hooks/usePageTitle'
 
 const inputStyles = {
   border: "1px solid #CF885B",
@@ -30,27 +22,26 @@ const inputStyles = {
     color: "#CF885B",
   },
   "&:focus": {
-    outline: "none", // ביטול קו הפוקוס
-    boxShadow: "none", // ביטול הצללים
+    outline: "none",
+    boxShadow: "none",
   },
   "& .MuiOutlinedInput-root.Mui-focused": {
-    borderColor: "#CF885B", // צבע גבול בזמן פוקוס
-    boxShadow: "none", // ביטול הצללים
-    outline: "none", // ביטול קו הפוקוס
+    borderColor: "#CF885B",
+    boxShadow: "none",
+    outline: "none",
   },
   "& .MuiInputBase-root": {
-    boxShadow: "none", // ביטול הצללים
+    boxShadow: "none",
   },
-  "--joy-palette-focusVisible": "#CF885B", // שינוי הצבע של הפוקוס
+  "--joy-palette-focusVisible": "#CF885B",
 };
-
 
 const AddRecipe = () => {
 
   usePageTitle("הוספת מתכון")
-  const dispatch = useDispatch();
-  const recipes = useSelector((state) => state.recipeSlice.Recipes);
-  const nextId = recipes.length + 1;
+  const dispatch = useDispatch()
+  const recipes = useSelector((state) => state.recipeSlice.Recipes)
+  const nextId = recipes.length + 1
 
   const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm({
     defaultValues: {
@@ -62,37 +53,37 @@ const AddRecipe = () => {
       img: null,
       ingredientGroups: []
     },
-  });
+  })
 
-  const MySwal = withReactContent(Swal);
+  const MySwal = withReactContent(Swal)
 
-  const [img, setImg] = useState(null);
-  const [ingredientGroups, setIngredientGroups] = useState([]);
-  const [groupTitle, setGroupTitle] = useState("");
-  const [ingredients, setIngredients] = useState("");
+  const [img, setImg] = useState(null)
+  const [ingredientGroups, setIngredientGroups] = useState([])
+  const [groupTitle, setGroupTitle] = useState("")
+  const [ingredients, setIngredients] = useState("")
 
   const handleImageUpload = (e) => {
-    const file = e.target.files[0];
+    const file = e.target.files[0]
     if (file) {
-      const imageUrl = URL.createObjectURL(file);
-      setImg(imageUrl);
+      const imageUrl = URL.createObjectURL(file)
+      setImg(imageUrl)
     }
   };
 
   const handleAddIngredientGroup = () => {
     if (!groupTitle.trim() || !ingredients.trim())
-      return;
+      return
 
     const newGroup = {
       title: groupTitle,
       ingredientsList: ingredients.split("\n").map(item => item.trim()).filter(item => item !== ""),
-    };
+    }
 
-    setIngredientGroups([...ingredientGroups, newGroup]);
-    setValue("ingredientGroups", [...ingredientGroups, newGroup]);
-    setGroupTitle("");
-    setIngredients("");
-  };
+    setIngredientGroups([...ingredientGroups, newGroup])
+    setValue("ingredientGroups", [...ingredientGroups, newGroup])
+    setGroupTitle("")
+    setIngredients("")
+  }
 
   const onSubmit = (data) => {
     const recipe = {
@@ -104,23 +95,23 @@ const AddRecipe = () => {
       category: data.category,
       favorite: false,
       img: img || "/Images/default.png",
-    };
+    }
 
-    dispatch(addRecipe(recipe));
+    dispatch(addRecipe(recipe))
 
     MySwal.fire({
       icon: "success",
       title: "המתכון נוסף בהצלחה!",
       showConfirmButton: false,
       timer: 1500
-    });
+    })
 
-    reset();
-    setIngredientGroups([]);
-    setGroupTitle("");
-    setIngredients("");
-    setImg(null);
-  };
+    reset()
+    setIngredientGroups([])
+    setGroupTitle("")
+    setIngredients("")
+    setImg(null)
+  }
 
   return (
     <>
@@ -134,7 +125,7 @@ const AddRecipe = () => {
 
             <Grid container spacing={2}>
               <Grid item xs={12}>
-                <Input {...register("name", { required: "שם המתכון הוא שדה חובה" })} placeholder="שם המתכון" sx={{ ...inputStyles, outline: 'none' }} fullWidth />
+                <Input {...register("name", { required: "שדה חובה" })} placeholder="שם המתכון" sx={{ ...inputStyles, outline: 'none' }} fullWidth />
                 {errors.name && <Typography sx={{ color: "#CF885B" }}>שדה זה חובה</Typography>}
               </Grid>
 
@@ -180,8 +171,6 @@ const AddRecipe = () => {
                   ))}
                 </Grid>
               )}
-
-              {/* אופן הכנה */}
               <Grid item xs={12}>
                 <Textarea
                   {...register("description", { required: "שדה חובה" })}
@@ -195,14 +184,10 @@ const AddRecipe = () => {
                 {errors.description && <Typography sx={{ color: "#CF885B" }}>שדה זה חובה</Typography>}
               </Grid>
 
-              {/* העלאת תמונה */}
               <Grid item xs={12}>
                 <Input type="file" accept="image/*" onChange={handleImageUpload} sx={inputStyles} fullWidth />
-                {img && <Box sx={{ mt: 2 }}><img src={img} alt="Uploaded Preview" style={{backgroundColor:"#CF885B" , maxWidth: "200px" }} /></Box>}
+                {img && <Box sx={{ mt: 2 }}><img src={img} alt="Uploaded Preview" style={{ backgroundColor: "#CF885B", maxWidth: "200px" }} /></Box>}
               </Grid>
-              
-
-
 
               <Grid item xs={12}>
                 <Button variant="contained" type="submit" sx={{ backgroundColor: '#CF885B', color: 'black' }}>
@@ -214,7 +199,7 @@ const AddRecipe = () => {
         </Grid>
       </Container>
     </>
-  );
-};
+  )
+}
 
-export default AddRecipe;
+export default AddRecipe

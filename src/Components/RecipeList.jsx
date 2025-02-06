@@ -1,37 +1,40 @@
-import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem';
-import ImageListItemBar from '@mui/material/ImageListItemBar';
-import { useSelector } from 'react-redux';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import RestaurantIcon from '@mui/icons-material/Restaurant';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
-import Grid from '@mui/material/Grid';
-import usePageTitle from '../Hooks/usePageTitle';
+import ImageListItem from '@mui/material/ImageListItem'
+import ImageListItemBar from '@mui/material/ImageListItemBar'
+import { useSelector } from 'react-redux'
+import AccessTimeIcon from '@mui/icons-material/AccessTime'
+import RestaurantIcon from '@mui/icons-material/Restaurant'
+import Typography from '@mui/material/Typography'
+import Box from '@mui/material/Box'
+import { Link } from 'react-router-dom'
+import { useEffect } from 'react'
+import Grid from '@mui/material/Grid'
+import usePageTitle from '../Hooks/usePageTitle'
 
 
 const RecipeList = () => {
+
     usePageTitle("מתכונים")
-    const recipes = useSelector((state) => state.recipeSlice.Recipes);
+
+    const recipes = useSelector((state) => state.recipeSlice.Recipes)
+
     useEffect(() => {
         console.log(recipes);
-    }, [recipes]);
+    }, [recipes])
 
     return (
         <>
             <Box sx={{ position: 'relative', width: '74.2vw', height: '55vh', marginRight: '12.5%', marginTop: '2vh', textAlign: 'center' }}>
-                <img 
-                    src="/Images/macaron.jpg" 
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                <img
+                    alt='macaron'
+                    src="/Images/macaron.jpg"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />
-                <Typography 
-                    sx={{ 
-                        position: 'absolute', 
-                        top: '50%', 
-                        left: '50%', 
-                        color: 'black', 
+                <Typography
+                    sx={{
+                        position: 'absolute',
+                        top: '50%',
+                        left: '50%',
+                        color: 'black',
                         fontSize: '100px',
                         transform: 'translate(-50%, -50%)',
                         textShadow: '3px 3px 3px rgba(255, 255, 255, 0.7)'
@@ -41,7 +44,7 @@ const RecipeList = () => {
                 </Typography>
             </Box>
 
-            <Box sx={{ display: 'flex', justifyContent: 'center' ,marginTop:'10vh'}}>
+            <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '10vh' }}>
                 <Grid container spacing={2} sx={{ width: '75%', height: 'auto' }}>
                     {recipes.map((item) => (
                         <Grid item xs={12} sm={6} md={4} key={item.id}>
@@ -78,7 +81,6 @@ const RecipeList = () => {
                                                 <Typography variant="h6" sx={{ marginBottom: '8px', fontWeight: 'bold', fontSize: '25px' }}>
                                                     {item.name}
                                                 </Typography>
-
                                                 <Box sx={{
                                                     display: 'flex',
                                                     marginBottom: '8px',
@@ -88,7 +90,6 @@ const RecipeList = () => {
                                                     <AccessTimeIcon sx={{ fontSize: 20 }} />
                                                     <Typography variant="body2" sx={{ fontSize: '14px' }}>{item.time}</Typography>
                                                 </Box>
-
                                                 <Box sx={{
                                                     display: 'flex',
                                                     gap: '8px',
@@ -108,7 +109,7 @@ const RecipeList = () => {
                 </Grid>
             </Box>
         </>
-    );
-};
+    )
+}
 
-export default RecipeList;
+export default RecipeList

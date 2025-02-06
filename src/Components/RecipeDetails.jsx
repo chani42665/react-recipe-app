@@ -1,50 +1,48 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import RestaurantIcon from '@mui/icons-material/Restaurant';
-import styled from 'styled-components';
-import { updateFavorite } from '../Store/RecipeSlice';
-import { useEffect } from 'react';
-import usePageTitle from '../Hooks/usePageTitle';
-
+import { useDispatch, useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
+import Box from '@mui/material/Box'
+import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography'
+import AccessTimeIcon from '@mui/icons-material/AccessTime'
+import RestaurantIcon from '@mui/icons-material/Restaurant'
+import styled from 'styled-components'
+import { updateFavorite } from '../Store/RecipeSlice'
+import { useEffect } from 'react'
+import usePageTitle from '../Hooks/usePageTitle'
 
 const RecipeDetails = () => {
 
-  
-  const { id } = useParams();
-  const recipes = useSelector((state) => state.recipeSlice.Recipes);
-  const currentRecipe = recipes.find((item) => item.id === parseInt(id));
-  const dispatch = useDispatch();
-  
-   useEffect(() => {
-      console.log(recipes);
-    }, [recipes])
-    usePageTitle(currentRecipe.name)
+  const { id } = useParams()
+  const recipes = useSelector((state) => state.recipeSlice.Recipes)
+  const currentRecipe = recipes.find((item) => item.id === parseInt(id))
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    console.log(recipes);
+  }, [recipes])
+
+  usePageTitle(currentRecipe.name)
 
   if (!currentRecipe) {
-    return <Typography variant="h6">Recipe not found</Typography>;
+    return <Typography variant="h6">Recipe not found</Typography>
   }
-  
+
   return (
     <Box sx={{ width: '100%', overflow: 'hidden' }}>
       <Grid container sx={{ width: '100%' }}>
         <Grid item xs={12} md={8}>
           <Box sx={{
             width: '100%',
-            height: '85vh', // הגובה של הקופסה הראשונה לוקח את כל גובה המסך
-            // bgcolor: '',
-            color:'white',
+            height: '85vh',
+            color: 'white',
             display: 'flex',
             flexDirection: 'column',
-            overflowY: 'scroll',  // אפשר גלילה אנכית
-  padding: 10,
-  paddingTop:2,
-  boxSizing: 'border-box',
-  scrollbarWidth: 'none',  // עבור Firefox - מסתיר את פס הגלילה
-  msOverflowStyle: 'none',
+            overflowY: 'scroll',
+            padding: 10,
+            paddingTop: 2,
+            boxSizing: 'border-box',
+            scrollbarWidth: 'none',  
+            msOverflowStyle: 'none',
           }}>
             <Box sx={{ color: 'white', width: '100%', textAlign: 'center', marginBottom: 2 }}>
               <Typography variant="h6" sx={{ fontWeight: 'bold', fontSize: '30px', }}>
@@ -56,7 +54,6 @@ const RecipeDetails = () => {
                 <RestaurantIcon sx={{ fontSize: 25 }} />
                 <Typography variant="body2" sx={{ fontSize: '20px' }}>{currentRecipe.category}</Typography>
 
-                {/* הוספת הלב לשורה */}
                 <StyledWrapper>
                   <label className="container">
                     <input
@@ -80,29 +77,26 @@ const RecipeDetails = () => {
               </Box>
             </Box>
 
-            {/* רשימת רכיבים */}
             <Box sx={{ width: '100%' }}>
               {currentRecipe.ingredients.map((item) => (
                 <Box key={item.title} sx={{ marginBottom: '16px' }}>
-                  <Typography variant="h6" sx={{ fontWeight: 'bold',fontSize:25,color:'#CF885B',  lineHeight: '2' }}>
+                  <Typography variant="h6" sx={{ fontWeight: 'bold', fontSize: 25, color: '#CF885B', lineHeight: '2' }}>
                     {item.title}
                   </Typography>
                   {item.ingredientsList.map((i, index) => (
-                    <Typography key={index} variant="body2" sx={{ fontSize:17,marginLeft: '16px',  lineHeight: '2' }}>
+                    <Typography key={index} variant="body2" sx={{ fontSize: 17, marginLeft: '16px', lineHeight: '2' }}>
                       {i}
                     </Typography>
                   ))}
                 </Box>
               ))}
             </Box>
-            <hr style={{border:" 1px solid white",width:"100%"}}/>
+            <hr style={{ border: " 1px solid white", width: "100%" }} />
             <Box>
-              <Typography variant="body2" sx={{  fontWeight: 'bold',fontSize:25,marginLeft: '18px',color:'#CF885B',  lineHeight: '2' }}>
-              
+              <Typography variant="body2" sx={{ fontWeight: 'bold', fontSize: 25, marginLeft: '18px', color: '#CF885B', lineHeight: '2' }}>
                 אופן ההכנה:
-                
               </Typography>
-              <Typography variant="body2" sx={{ fontSize:17,marginLeft: '16px',  lineHeight: '2' }}>
+              <Typography variant="body2" sx={{ fontSize: 17, marginLeft: '16px', lineHeight: '2' }}>
                 {currentRecipe.description}
               </Typography>
             </Box>
@@ -110,22 +104,22 @@ const RecipeDetails = () => {
         </Grid>
         <Grid item xs={12} md={4} sx={{ position: 'relative' }}>
           <Box sx={{ height: '90vh', overflow: 'hidden' }}>
-            <img 
-              src={currentRecipe.img} 
-              alt={currentRecipe.name} 
+            <img
+              src={currentRecipe.img}
+              alt={currentRecipe.name}
               style={{
-                width: '100%', 
-                height: '85vh',  // גובה התמונה 90% מהגובה של המסך
-                objectFit: 'cover', // שומר על יחס הגובה-רוחב שלה מבלי לחתוך את התמונה
-                objectPosition: 'center' // ממקם את התמונה במרכז
-              }} 
+                width: '100%',
+                height: '85vh',  
+                objectFit: 'cover', 
+                objectPosition: 'center' 
+              }}
             />
           </Box>
         </Grid>
       </Grid>
     </Box>
-  );
-};
+  )
+}
 
 const StyledWrapper = styled.div`
   .container input {
@@ -190,6 +184,6 @@ const StyledWrapper = styled.div`
       transform: scale(1);
     }
   }
-`;
+`
 
-export default RecipeDetails;
+export default RecipeDetails

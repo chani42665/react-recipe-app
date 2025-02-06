@@ -14,8 +14,8 @@ const userSlice=createSlice({
             state.email=actions.payload.email
         },
         logoutUser:(state,actions)=>{
-            state.name = '';
-            state.email = '';
+            state.name = ''
+            state.email = ''
         }
 
 

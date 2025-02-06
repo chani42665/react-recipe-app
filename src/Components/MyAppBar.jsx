@@ -2,7 +2,6 @@ import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
-import Container from '@mui/material/Container'
 import Button from '@mui/material/Button'
 import Avatar from '@mui/material/Avatar'
 import Popover from '@mui/material/Popover'
@@ -51,9 +50,7 @@ const MyAppBar = () => {
 
   return (
     <AppBar position="static" sx={{  minHeight: '15h',backgroundColor: 'black', color: '#CF885B' }}>
-      {/* ביטול רווחים ב-AppBar */}
       <Toolbar sx={{ padding: 0, margin: 0, alignItems: 'center' }}>
-        {/* תפריט ניווט */}
         <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', paddingLeft: 0 }}>
           {pages.map((page) => (
             <Button
@@ -101,14 +98,12 @@ const MyAppBar = () => {
           )}
         </Box>
 
-        {/* לוגו במרכז */}
         <Box sx={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', textAlign: 'center', }}>
           <Typography sx={{ color: '#CF885B', fontFamily: 'Smooch Sans', fontSize: '50px' , paddingTop: '5px',}}>
             Sweet Heart
           </Typography>
         </Box>
 
-        {/* כפתור התחברות או אוואטאר */}
         {userObj?.name ? (
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <Avatar
