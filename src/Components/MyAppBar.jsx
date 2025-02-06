@@ -1,48 +1,46 @@
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
-import Typography from '@mui/material/Typography'  // ייבוא אחד בלבד
+import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import Button from '@mui/material/Button'
 import Avatar from '@mui/material/Avatar'
-import Popover from '@mui/material/Popover' // Import Popover
+import Popover from '@mui/material/Popover'
 import { useSelector, useDispatch } from 'react-redux'
-import { Link, useNavigate } from 'react-router-dom'
-import { logoutUser } from '../Store/UserSlice' // אם יש לך פעולה ליציאה
+import { Link, useNavigate, useLocation } from 'react-router-dom'
+import { logoutUser } from '../Store/UserSlice'
 import { useState } from 'react'
 
 const pages = [
   { name: 'דף הבית', link: '/' },
-  {
-    name: 'מתכונים', link: '/RecipeList'
-  },
+  { name: 'מתכונים', link: '/RecipeList' },
 ]
 
 const MyAppBar = () => {
   const userObj = useSelector((state) => state.userSlice)
   const dispatch = useDispatch()
   const navigate = useNavigate()
-
-  const [anchorEl, setAnchorEl] = useState(null) // Set the anchorEl to manage Popover
+  const location = useLocation()
+  const [anchorEl, setAnchorEl] = useState(null)
 
   const handleSignIn = () => {
-    navigate('/Login') // נווט לעמוד הלוגין
+    navigate('/Login')
   }
 
   const handlePopoverOpen = (event) => {
-    setAnchorEl(event.currentTarget) // Open Popover when Avatar is clicked
+    setAnchorEl(event.currentTarget)
   }
 
   const handlePopoverClose = () => {
-    setAnchorEl(null) // Close Popover
+    setAnchorEl(null)
   }
 
   const handleSignOut = () => {
-    dispatch(logoutUser()) // שלח פעולה ל-Redux כדי להתנתק
-    setAnchorEl(null) // סגור את ה-Popover
+    dispatch(logoutUser())
+    setAnchorEl(null)
     navigate('/')
-
   }
+
   const handleFavorite = () => {
     setAnchorEl(null)
     navigate('/Favorite')
@@ -52,60 +50,38 @@ const MyAppBar = () => {
   const id = open ? 'simple-popover' : undefined
 
   return (
-    <AppBar position="static" sx={{ height: '15vh', justifyContent: 'center', backgroundColor: 'black', color: '#CF885B', }}>
+    <AppBar position="static" sx={{ height: '15vh', justifyContent: 'center', backgroundColor: 'black', color: '#CF885B' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          {/* <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-             
-              textDecoration: 'none',
-            }}
-          >
-            LOGO
-          </Typography> */}
-
-
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
                 key={page.name}
-                sx={{ my: 2, display: 'block', fontSize: '20px',color:'transparent' }}
+                sx={{ my: 2, display: 'block', fontSize: '20px', color: 'transparent', position: 'relative' }}
               >
-                <Link to={page.link} style={{ textDecoration: 'none', color: '#CF885B' }}>
+                <Link 
+                  to={page.link} 
+                  style={{ textDecoration: 'none', color: '#CF885B', paddingBottom: '5px', borderBottom: location.pathname === page.link ? '2px solid #CF885B' : 'none' }}
+                >
                   {page.name}
                 </Link>
               </Button>
             ))}
-            {userObj?.name && <Button sx={{ my: 2, color: '#CF885B', display: 'block', fontSize: '20px',color:'transparent' }}>
-              <Link to="/AddRecipe" style={{ textDecoration: 'none', color: 'inherit' }}>
-                הוספת מתכון
-              </Link>
-            </Button>}
-
+            {userObj?.name && (
+              <Button sx={{ my: 2, color: '#CF885B', display: 'block', fontSize: '20px', color: 'transparent', position: 'relative' }}>
+                <Link to="/AddRecipe" style={{ textDecoration: 'none', color: '#CF885B', paddingBottom: '5px', borderBottom: location.pathname === '/AddRecipe' ? '2px solid #CF885B' : 'none' }}>
+                  הוספת מתכון
+                </Link>
+              </Button>
+            )}
           </Box>
 
-          <Box sx={{
-            position: 'absolute',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            width: '17%',
-            height: 'auto',textAlign:'center'
-          }}><Typography sx={{ color: '#CF885B', fontFamily: 'Smooch Sans', fontSize: '50px' }}>
+          <Box sx={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', width: '17%', height: 'auto', textAlign: 'center' }}>
+            <Typography sx={{ color: '#CF885B', fontFamily: 'Smooch Sans', fontSize: '50px' }}>
               Sweet Heart
             </Typography>
-
           </Box>
 
-
-          {/* אם המשתמש מחובר, תראה את ה-Avatar עם Popover */}
           {userObj?.name ? (
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
               <Avatar
@@ -115,9 +91,9 @@ const MyAppBar = () => {
                   height: 40,
                   cursor: 'pointer',
                 }}
-                onClick={handlePopoverOpen} // פתח את ה-Popover בלחיצה
+                onClick={handlePopoverOpen}
               >
-                {userObj.name[0]} {/* אות ראשונה מהשם */}
+                {userObj.name[0]}
               </Avatar>
               <Popover
                 id={id}

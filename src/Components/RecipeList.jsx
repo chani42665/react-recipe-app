@@ -30,20 +30,19 @@ const RecipeList = () => {
                         left: '50%', 
                         color: 'black', 
                         fontSize: '100px',
-                        transform: 'translate(-50%, -50%)'
-                ,     textShadow: '3px 3px 3px rgba(255, 255, 255, 0.7)'
- 
+                        transform: 'translate(-50%, -50%)',
+                        textShadow: '3px 3px 3px rgba(255, 255, 255, 0.7)'
                     }}
                 >
                     מתכונים
                 </Typography>
             </Box>
 
-            <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+            <Box sx={{ display: 'flex', justifyContent: 'center' ,marginTop:'10vh'}}>
                 <Grid container spacing={2} sx={{ width: '75%', height: 'auto' }}>
                     {recipes.map((item) => (
                         <Grid item xs={12} sm={6} md={4} key={item.id}>
-                            <ImageListItem sx={{ position: 'relative' }}>
+                            <ImageListItem sx={{ position: 'relative', transition: 'transform 0.3s', '&:hover': { transform: 'scale(1.05)' } }}>
                                 <Link to={`/RecipeList/${item.id}`} style={{
                                     display: 'block',
                                     width: '100%',

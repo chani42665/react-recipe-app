@@ -182,7 +182,7 @@ const Login = () => {
             <Typography color="white" sx={{ mb: 2 }}>מוזמנים לביקור, קפה ופטיפור</Typography>
           </Grid>
           <Grid item>
-            <Typography color="white" sx={{ mb: 2 }}>ימוד</Typography>
+            <Typography color="white" sx={{ mb: 2 }}></Typography>
           </Grid>
 
           {/* טופס */}

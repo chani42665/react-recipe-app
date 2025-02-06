@@ -25,7 +25,7 @@ const Home = () => {
       <Box
         sx={{
           width: '100%',
-          height: '100vh', 
+          height: '75vh', 
           overflow: 'hidden',
           position: 'relative',
         }}
@@ -51,17 +51,17 @@ const Home = () => {
 
       <Typography sx={{ marginTop: '20vh', fontSize: '50px', color: '#CF885B' }}>חדש באתר❤️</Typography>
 
-      <Box sx={{ marginTop: '20px', padding: '20px', width: '80%',alignItems:'center',justifyContent:'center' ,display: 'flex'}}>
-        <Grid container spacing={1}>
+      <Box sx={{ marginTop: '20px', padding: '20px', width: '100%', maxWidth: '1200px', display: 'flex', justifyContent: 'center' }}>
+        <Grid container spacing={2}>
           {lastThreeRecipes.map((item) => (
-            <Grid item xs={12} sm={5} md={4} key={item.id}>
-              <Box sx={{ position: 'relative',alignItems:'center',justifyContent:'center' }}>
+            <Grid item xs={12} sm={6} md={4} key={item.id}>
+              <Box sx={{ position: 'relative', display: 'flex', justifyContent: 'center' }}>
                 <Link
                   to={`/RecipeList/${item.id}`}
                   style={{
                     display: 'block',
-                    width: '90%',
-                    height: '80%',
+                    width: '100%',
+                    height: '100%',
                     textDecoration: 'none',
                   }}
                 >
