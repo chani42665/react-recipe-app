@@ -17,8 +17,8 @@ const Favorite = () => {
     const recipes = useSelector((state) => state.recipeSlice.Recipes)
 
     useEffect(() => {
-        console.log(recipes);
-    }, [recipes]);
+        console.log(recipes)
+    }, [recipes])
 
     return (<>
         <Box sx={{ position: 'relative', width: '74.2vw', height: '55vh', marginRight: '12.5%', marginTop: '2vh', textAlign: 'center' }}>

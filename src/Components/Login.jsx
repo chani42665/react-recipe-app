@@ -17,7 +17,6 @@ const Login = () => {
   })
 
   const onSubmit = (data) => {
-    console.log(data)
     dispatch(createUser(data))
     navigate("/")
   }
@@ -35,7 +34,7 @@ const Login = () => {
             <Typography color="white" sx={{ mb: 2 }}>מוזמנים לביקור, קפה ופטיפור</Typography>
           </Grid>
           <Grid item>
-            <Typography color="white" sx={{ mb: 2 }}></Typography>
+            <Typography color="white" sx={{ mb: 2 }}>0527690795 / 0583272665</Typography>
           </Grid>
 
           <Grid item>
@@ -80,9 +79,9 @@ const Login = () => {
                 <Grid item>
                   <Button variant="contained" type="submit" sx={{
                     backgroundColor: '#CF885B',
-                    color: 'black', 
+                    color: 'black',
                     '&:hover': {
-                      backgroundColor: '#CF885B', 
+                      backgroundColor: '#CF885B',
                     },
                   }} fullWidth>
                     התחבר

@@ -9,8 +9,8 @@ import userSlice from './Store/UserSlice';
 import recipeSlice from './Store/RecipeSlice'
 import { Provider } from 'react-redux';
 
-const myStore=configureStore({
-  reducer:{
+const myStore = configureStore({
+  reducer: {
     userSlice,
     recipeSlice
   }
@@ -20,12 +20,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
     <Provider store={myStore}>
-
-    <App />
+      <App />
     </Provider>
-
   </BrowserRouter>
-
   
 );
 

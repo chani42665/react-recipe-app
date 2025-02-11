@@ -18,14 +18,10 @@ const RecipeDetails = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    console.log(recipes);
+    console.log(recipes)
   }, [recipes])
 
   usePageTitle(currentRecipe.name)
-
-  if (!currentRecipe) {
-    return <Typography variant="h6">Recipe not found</Typography>
-  }
 
   return (
     <Box sx={{ width: '100%', overflow: 'hidden' }}>

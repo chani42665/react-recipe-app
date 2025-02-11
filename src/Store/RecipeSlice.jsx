@@ -408,7 +408,7 @@ const initialValue = {
     {
       id: 8,
       name: "קראנץ' שמרים דפוף במלית פסק זמן",
-      time: "שעתיים", 
+      time: "שעתיים",
       ingredients: [{
         title: "לבצק שמרים בסיסי",
         ingredientsList: [
@@ -474,7 +474,7 @@ const initialValue = {
     {
       id: 9,
       name: "מיני מגנום פאדג' שוקולד",
-      time: "שעה וחצי", 
+      time: "שעה וחצי",
       ingredients: [{
         title: "לסירופ פאדג' שוקולד",
         ingredientsList: [
@@ -522,7 +522,7 @@ const initialValue = {
     {
       id: 10,
       name: "עוגת גבינה פירורים שוקו צ'יפס",
-      time: "40 דקות", 
+      time: "40 דקות",
       ingredients: [{
         title: "לבצק עוגיות שוקולד צ'יפס",
         ingredientsList: [
@@ -590,7 +590,7 @@ const initialValue = {
     {
       id: 11,
       name: "מקרון חגיגי במילוי גנאש שוקולד לבן",
-      time: "שעתיים", 
+      time: "שעתיים",
       ingredients: [{
         title: "למקרונים",
         ingredientsList: [
@@ -635,7 +635,7 @@ const initialValue = {
     {
       id: 12,
       name: "עוגת מוצרט",
-      time: "שעה וחצי", 
+      time: "שעה וחצי",
       ingredients: [{
         title: "לשכבות מוס גנאש מוקצף",
         ingredientsList: [
@@ -702,7 +702,7 @@ const initialValue = {
     {
       id: 13,
       name: "טארט הפוך של גבינה ושוקולד",
-      time: "35 דקות", 
+      time: "35 דקות",
       ingredients: [{
         title: "לבסיס בצק פריך",
         ingredientsList: [
@@ -772,7 +772,7 @@ const initialValue = {
     {
       id: 14,
       name: "חטיפי טעמי ואגוזי ממכרים",
-      time: "חצי שעה", 
+      time: "חצי שעה",
       ingredients: [{
         title: "לבסיס קראנץ' טעמי בייגלה",
         ingredientsList: [
@@ -1157,8 +1157,8 @@ const initialValue = {
       favorite: false,
       img: "/Images/21.jpg"
     }
-    
-    ,{
+
+    , {
       id: 22,
       name: "עוגת חטיף שוקולד- חמאת בוטנים",
       time: "שעה",

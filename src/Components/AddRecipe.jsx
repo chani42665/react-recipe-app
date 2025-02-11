@@ -34,7 +34,7 @@ const inputStyles = {
     boxShadow: "none",
   },
   "--joy-palette-focusVisible": "#CF885B",
-};
+}
 
 const AddRecipe = () => {
 
@@ -68,7 +68,7 @@ const AddRecipe = () => {
       const imageUrl = URL.createObjectURL(file)
       setImg(imageUrl)
     }
-  };
+  }
 
   const handleAddIngredientGroup = () => {
     if (!groupTitle.trim() || !ingredients.trim())
